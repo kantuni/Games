@@ -1,0 +1,9 @@
+### OSX ###
+*.DS_Store
+
+### JetBrains ###
+.idea/
+
+### NPM ###
+/node_modules
+npm-debug.log
