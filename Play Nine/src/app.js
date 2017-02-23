@@ -3,15 +3,26 @@
  */
 
 
-'use strict';
-
 import React, {Component} from 'react';
-import './app.css';
+import Stars from './stars';
+import Numbers from './numbers';
+import Answer from './answer';
+import Actions from './actions';
+
 
 class App extends Component {
   render() {
     return (
-      <h1>hello friend</h1>
+      <div className="container">
+        <h1>Play Nine</h1>
+        <p className="lead">Have fun!</p>
+        <div className="row">
+          <Stars />
+          <Actions />
+          <Answer />
+        </div>
+        <Numbers />
+      </div>
     );
   }
 }

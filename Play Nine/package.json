@@ -1,8 +1,8 @@
 {
-  "name": "play-nine",
+  "name": "Play-Nine",
   "version": "0.1.0",
   "devDependencies": {
-    "react-scripts": "0.9.0"
+    "react-scripts": "latest"
   },
   "dependencies": {
     "react": "latest",
