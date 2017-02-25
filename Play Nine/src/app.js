@@ -14,14 +14,32 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Play Nine</h1>
-        <p className="lead">Have fun!</p>
         <div className="row">
-          <Stars />
-          <Actions />
-          <Answer />
+          <div className="col-12">
+            <h1>Play Nine</h1>
+          </div>
         </div>
-        <Numbers />
+        <div className="row">
+          <div className="col-12">
+            <p className="lead">Have fun!</p>
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-5" id="stars">
+            <Stars />
+          </div>
+          <div className="col-2" id="actions">
+            <Actions />
+          </div>
+          <div className="col-5" id="answer">
+            <Answer />
+          </div>
+        </div>
+        <div className="row mt-5">
+          <div className="col-12" id="numbers">
+            <Numbers />
+          </div>
+        </div>
       </div>
     );
   }

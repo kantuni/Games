@@ -7,10 +7,16 @@ import React, {Component} from 'react';
 
 class Stars extends Component {
   render() {
+    let stars = [];
+    let amount = Math.floor(Math.random() * 9) + 1;
+
+    for (let i = 0; i < amount; ++i) {
+      stars.push(<i className="fa fa-star" key={i.toString()} />)
+    }
+
     return (
-      <div className="col-5 stars">
-        <div className="jumbotron">
-        </div>
+      <div className="text-center">
+        {stars}
       </div>
     );
   }

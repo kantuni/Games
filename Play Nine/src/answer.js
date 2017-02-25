@@ -7,8 +7,9 @@ import React, {Component} from 'react';
 class Answer extends Component {
   render() {
     return (
-      <div className="col-5 answer">
-        <div className="jumbotron"></div>
+      <div className="text-center">
+        <button className="btn btn-secondary">7</button>
+        <button className="btn btn-secondary">2</button>
       </div>
     );
   }
