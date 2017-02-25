@@ -2,12 +2,12 @@
  * Created by Henrikh Kantuni on 2/23/17.
  */
 
+
 import React, {Component} from 'react';
 import Stars from './stars';
 import Actions from './actions';
 import Answer from './answer';
 import Numbers from './numbers';
-
 
 class App extends Component {
   constructor(props) {
