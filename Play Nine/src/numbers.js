@@ -2,8 +2,8 @@
  * Created by Henrikh Kantuni on 2/23/17.
  */
 
-import React, {Component} from 'react';
 
+import React, {Component} from 'react';
 
 class Numbers extends Component {
   render() {
