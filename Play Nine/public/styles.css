@@ -3,10 +3,6 @@
   flex-direction: column;
 }
 
-#app > .container {
-  margin: 3em auto;
-}
-
 #stars,
 #answer {
   align-items: center;
@@ -32,4 +28,8 @@
 #answer .btn,
 #numbers .btn {
   margin: .4em .2em;
+}
+
+.number-of-retries {
+  padding-left: .25em;
 }
