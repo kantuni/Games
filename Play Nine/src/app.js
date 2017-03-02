@@ -13,74 +13,108 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.chooseNumber = this.chooseNumber.bind(this);
-    this.handleRetry = this.handleRetry.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     this.handleDeselect = this.handleDeselect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRetry = this.handleRetry.bind(this);
     this.state = {
+      numberOfRetries: 5,
       starsCount: Math.floor(Math.random() * 9) + 1,
-      numberOfRetries: 10,
       selectedNumbers: [],
       usedNumbers: []
     };
   }
 
-  chooseNumber(number) {
-    let state = this.state;
-    state.selectedNumbers.push(number);
-    this.setState(state);
+  handleSelect(number) {
+    let selectedNumbers = this.state.selectedNumbers.slice();
+    selectedNumbers.push(number);
+    this.setState({
+      selectedNumbers: selectedNumbers
+    });
   }
 
-  handleRetry(event) {
-    if (this.state.numberOfRetries > 0) {
-      let state = {
-        starsCount: Math.floor(Math.random() * 9) + 1,
-        numberOfRetries: this.state.numberOfRetries - 1
-      };
-      this.setState(state);
-    }
-  }
-
-  handleDeselect(event) {
-    let selectedNumber = event.target.textContent;
-    let selectedNumbers = this.state.selectedNumbers;
+  handleDeselect(e) {
+    const selectedNumber = e.target.textContent;
+    let selectedNumbers = this.state.selectedNumbers.slice();
     selectedNumbers.splice(selectedNumbers.indexOf(selectedNumber), 1);
     this.setState({
       selectedNumbers: selectedNumbers
     });
   }
-  
-  handleSubmit(event) {
-    let selectedNumbers = this.state.selectedNumbers;
+
+  moveExists(stars, numbers) {
+    const combinations = {
+      1: [[1]],
+      2: [[2]],
+      3: [[3], [1, 2]],
+      4: [[4], [1, 3]],
+      5: [[5], [1, 4], [2, 3]],
+      6: [[6], [1, 5], [2, 4], [1, 2, 3]],
+      7: [[7], [1, 6], [2, 5], [3, 4], [1, 2, 4]],
+      8: [[8], [1, 7], [2, 6], [3, 5], [1, 2, 5], [1, 3, 4]],
+      9: [[9], [1, 8], [2, 7], [3, 6], [4, 5], [1, 2, 6], [1, 3, 5], [2, 3, 4]]
+    };
+
+    /* TODO: finish the logic here */
+  }
+
+  handleSubmit(e) {
+    let selectedNumbers = this.state.selectedNumbers.slice();
     if (selectedNumbers.length === 0) {
       return;
     }
 
-    let sum = selectedNumbers.reduce((accumulator, value) => {
+    const sum = selectedNumbers.reduce((accumulator, value) => {
       return accumulator + value;
     });
-    
+
     if (sum === this.state.starsCount) {
-      let usedNumbers = this.state.usedNumbers;
+      let starsCount = Math.floor(Math.random() * 9) + 1;
+      let usedNumbers = this.state.usedNumbers.slice();
       usedNumbers = usedNumbers.concat(selectedNumbers);
       this.setState({
-        starsCount: Math.floor(Math.random() * 9) + 1,
+        starsCount: starsCount,
         selectedNumbers: [],
         usedNumbers: usedNumbers
       });
-      
+
+      // win
       if (usedNumbers.length === 9) {
         if (confirm("Congratulations. You won!\nDo you want to play again?")) {
           this.setState({
-            numberOfRetries: 10,
+            numberOfRetries: 5,
             selectedNumbers: [],
             usedNumbers: []
           });
         }
       }
+
+      // loose
+      let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let notUsedNumbers = numbers.filter(number => !selectedNumbers.includes(number));
+      if (this.state.numberOfRetries === 0) {
+        if (!this.moveExists(starsCount, notUsedNumbers)) {
+          if (confirm("Sorry. You lost!\nDo you want to play again?")) {
+            this.setState({
+              numberOfRetries: 5,
+              selectedNumbers: [],
+              usedNumbers: []
+            });
+          }
+        }
+      }
     } else {
       this.setState({
         selectedNumbers: []
+      });
+    }
+  }
+
+  handleRetry(e) {
+    if (this.state.numberOfRetries > 0) {
+      this.setState({
+        starsCount: Math.floor(Math.random() * 9) + 1,
+        numberOfRetries: this.state.numberOfRetries - 1
       });
     }
   }
@@ -106,7 +140,7 @@ class App extends Component {
             />
           </div>
           <div className="col-5" id="answer">
-            <Answer 
+            <Answer
               selectedNumbers={this.state.selectedNumbers}
               handleDeselect={this.handleDeselect}
             />
@@ -115,7 +149,7 @@ class App extends Component {
         <div className="row mt-5">
           <div className="col-12" id="numbers">
             <Numbers
-              chooseNumber={this.chooseNumber}
+              handleSelect={this.handleSelect}
               selectedNumbers={this.state.selectedNumbers}
               usedNumbers={this.state.usedNumbers}
             />

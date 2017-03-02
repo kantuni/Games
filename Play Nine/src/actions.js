@@ -3,24 +3,22 @@
  */
 
 
-import React, {Component} from 'react';
+import React from 'react';
 
-class Actions extends Component {
-  render() {
-    return (
-      <div className="btn-group-vertical">
-        <button className="btn btn-primary" onClick={this.props.handleSubmit}>=</button>
-        <button
-          className="btn btn-info"
-          disabled={this.props.numberOfRetries === 0}
-          onClick={this.props.handleRetry}
-        >
-          <i className="fa fa-refresh" />
-          <span className="number-of-retries">{this.props.numberOfRetries}</span>
-        </button>
-      </div>
-    );
-  }
+function Actions(props) {
+  return (
+    <div className="btn-group-vertical">
+      <button className="btn btn-primary" onClick={props.handleSubmit}>=</button>
+      <button
+        className="btn btn-info"
+        disabled={props.numberOfRetries === 0}
+        onClick={props.handleRetry}
+      >
+        <i className="fa fa-refresh" />
+        <span className="number-of-retries">{props.numberOfRetries}</span>
+      </button>
+    </div>
+  );
 }
 
 export default Actions;

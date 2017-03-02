@@ -3,23 +3,21 @@
  */
 
 
-import React, {Component} from 'react';
+import React from 'react';
 
-class Stars extends Component {
-  render() {
-    let stars = [];
-    for (let i = 0; i < this.props.starsCount; ++i) {
-      stars.push(
-        <i className="fa fa-star" key={i.toString()} />
-      );
-    }
-
-    return (
-      <div className="text-center">
-        {stars}
-      </div>
+function Stars(props) {
+  let stars = [];
+  for (let i = 0; i < props.starsCount; ++i) {
+    stars.push(
+      <i className="fa fa-star" key={i.toString()} />
     );
   }
+
+  return (
+    <div className="text-center">
+      {stars}
+    </div>
+  );
 }
 
 export default Stars;
