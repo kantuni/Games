@@ -55,7 +55,14 @@ class App extends Component {
       9: [[9], [1, 8], [2, 7], [3, 6], [4, 5], [1, 2, 6], [1, 3, 5], [2, 3, 4]]
     };
 
-    /* TODO: finish the logic here */
+    for (let i = 0; i < combinations[stars].length; ++i) {
+      let isSuperset = combinations[stars][i].every(number => numbers.includes(number));
+      if (isSuperset) {
+        return true;
+      }
+    }
+    
+    return false;
   }
 
   handleSubmit(e) {
@@ -91,7 +98,7 @@ class App extends Component {
 
       // loose
       let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      let notUsedNumbers = numbers.filter(number => !selectedNumbers.includes(number));
+      let notUsedNumbers = numbers.filter(number => !usedNumbers.includes(number));
       if (this.state.numberOfRetries === 0) {
         if (!this.moveExists(starsCount, notUsedNumbers)) {
           if (confirm("Sorry. You lost!\nDo you want to play again?")) {

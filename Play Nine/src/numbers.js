@@ -9,8 +9,8 @@ function Numbers(props) {
   let numbers = [];
   for (let i = 1; i < 10; ++i) {
     let className, disabled,
-      isSelected = props.selectedNumbers.indexOf(i) > -1,
-      isUsed = props.usedNumbers.indexOf(i) > -1;
+      isSelected = props.selectedNumbers.includes(i),
+      isUsed = props.usedNumbers.includes(i);
 
     if (isSelected) {
       className = 'btn btn-secondary active';
