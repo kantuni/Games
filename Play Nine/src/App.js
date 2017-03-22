@@ -5,7 +5,7 @@
 
 import React, {Component} from 'react';
 import Stars from './stars';
-import Actions from './actions';
+import Actions from './Actions';
 import Answer from './answer';
 import Numbers from './numbers';
 
