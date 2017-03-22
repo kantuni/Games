@@ -18,10 +18,10 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRetry = this.handleRetry.bind(this);
     this.state = {
-      numberOfRetries: 5,
       starsCount: Math.floor(Math.random() * 9) + 1,
       selectedNumbers: [],
-      usedNumbers: []
+      usedNumbers: [],
+      numberOfRetries: 5
     };
   }
 
