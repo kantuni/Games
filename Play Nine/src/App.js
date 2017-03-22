@@ -6,8 +6,8 @@
 import React, {Component} from 'react';
 import Stars from './Stars';
 import Actions from './Actions';
-import Answer from './answer';
-import Numbers from './numbers';
+import Answer from './Answer';
+import Numbers from './Numbers';
 
 class App extends Component {
   constructor(props) {
