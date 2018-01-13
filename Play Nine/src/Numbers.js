@@ -7,7 +7,7 @@ import React from 'react';
 
 function Numbers(props) {
   let numbers = [];
-  for (let i = 1; i < 10; ++i) {
+  for (let i = 1; i < 10; i++) {
     let className, disabled,
       isSelected = props.selectedNumbers.includes(i),
       isUsed = props.usedNumbers.includes(i);
